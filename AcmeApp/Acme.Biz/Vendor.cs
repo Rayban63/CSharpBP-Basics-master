@@ -16,7 +16,7 @@ namespace Acme.Biz
         public string CompanyName { get; set; }
         public string Email { get; set; }
 
-        /// <summary>
+        /// <summary> 
         /// Sends an email to welcome a new vendor.
         /// </summary>
         /// <returns></returns>
