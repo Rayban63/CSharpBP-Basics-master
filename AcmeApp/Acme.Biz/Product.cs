@@ -11,6 +11,19 @@ namespace Acme.Biz
     /// </summary>
     public class Product
     {
+        public Product()
+        {
+            Console.WriteLine("Product instance is created");
+        }
+        public Product(int productId, string productName, string productDescription ) : this()
+        {
+            this.ProductId = productId;
+            this.ProductName = productName;
+            this.ProductDescription = productDescription;
+
+            Console.WriteLine("Product instance has a name: " + ProductName);
+
+        }
         private string productName;
 
         public string ProductName
@@ -33,6 +46,10 @@ namespace Acme.Biz
             set { productId = value; }
         }
 
+        /// <summary>
+        /// Basic Methode to test the class
+        /// </summary>
+        /// <returns></returns>
         public string SayHello()
         {
             return "Hello " + ProductName +

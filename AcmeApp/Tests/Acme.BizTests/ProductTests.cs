@@ -27,5 +27,18 @@ namespace Acme.Biz.Tests
             //--Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod()]
+        public void SayHello_ParamaterizedConstructor()
+        {
+            //--Arrange
+            var currentProduct = new Product(1, "Saw", "15 inch Steal hand blade");
+            var expected = "Hello Saw (1): 15 inch Steal hand blade";
+
+            //--Act
+            var actual = currentProduct.SayHello();
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
