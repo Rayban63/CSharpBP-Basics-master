@@ -17,6 +17,7 @@ namespace Acme.Biz
         public Product()
         {
             Console.WriteLine("Product instance is created");
+            //this.ProductVendor = new Vendor();//When the instance is allways needded this code needs to be active
         }
         public Product(int productId, string productName, string productDescription ) : this()
         {
@@ -53,6 +54,23 @@ namespace Acme.Biz
             get { return productId; }
             set { productId = value; }
         }
+        private Vendor productVendor;
+
+        public Vendor ProductVendor
+        {
+            get
+            {
+                //when a instance is not allways needded instantiate the instanstance only when its needded (lazy loading)
+                if (productVendor == null) 
+                {
+                    productVendor = new Vendor();
+
+                }
+                return productVendor;
+            }
+            set { ProductVendor = value; }
+        }
+
         #endregion
 
         #region Methodes
@@ -62,6 +80,7 @@ namespace Acme.Biz
         /// <returns></returns>
         public string SayHello()
         {
+            //when a instance is only needded once, instantiate the instanstance here
             var vendor = new Vendor();
             vendor.SendWelcomeEmail("Message from Acme.com");
             var emailService = new EmailService();
