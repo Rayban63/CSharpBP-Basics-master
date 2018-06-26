@@ -40,5 +40,24 @@ namespace Acme.Biz.Tests
             //--Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod()]
+        public void SayHello_ObjectInitializerTest()
+        {
+            //--Arrange
+            var currentProduct = new Product()
+            {
+                ProductId = 1,
+                ProductName = "Saw",
+                ProductDescription = "15 inch Steal hand blade", 
+            };
+            var expected = "Hello Saw (1): 15 inch Steal hand blade";
+
+            //--Act
+            var actual = currentProduct.SayHello();
+
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
