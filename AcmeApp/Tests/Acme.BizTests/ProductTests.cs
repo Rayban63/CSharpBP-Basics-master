@@ -19,7 +19,7 @@ namespace Acme.Biz.Tests
             currentProduct.ProductName = "Saw";
             currentProduct.ProductId = 1;
             currentProduct.ProductDescription = "15 inch Steal hand blade";
-            var expected = "Hello Saw (1): 15 inch Steal hand blade";
+            var expected = "Hello Saw (1): 15 inch Steal hand blade, Available on: ";
 
             //--Act
             var actual = currentProduct.SayHello();
@@ -32,7 +32,7 @@ namespace Acme.Biz.Tests
         {
             //--Arrange
             var currentProduct = new Product(1, "Saw", "15 inch Steal hand blade");
-            var expected = "Hello Saw (1): 15 inch Steal hand blade";
+            var expected = "Hello Saw (1): 15 inch Steal hand blade, Available on: ";
 
             //--Act
             var actual = currentProduct.SayHello();
@@ -50,7 +50,7 @@ namespace Acme.Biz.Tests
                 ProductName = "Saw",
                 ProductDescription = "15 inch Steal hand blade", 
             };
-            var expected = "Hello Saw (1): 15 inch Steal hand blade";
+            var expected = "Hello Saw (1): 15 inch Steal hand blade, Available on: ";
 
             //--Act
             var actual = currentProduct.SayHello();
