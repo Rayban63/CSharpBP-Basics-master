@@ -80,7 +80,7 @@ namespace Acme.Biz
         /// <returns></returns>
         public string SayHello()
         {
-            //when a instance is only needded once, instantiate the instanstance here
+            //when a instance is only needded once, instantiate the instanstance in the methode
             var vendor = new Vendor();
             vendor.SendWelcomeEmail("Message from Acme.com");
             var emailService = new EmailService();
