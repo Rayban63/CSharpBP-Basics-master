@@ -180,5 +180,49 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(expectedMessage, actualMessage);
         }
+        [TestMethod()]
+        public void Category_NewValue()
+        {
+            //--Arrange
+            var currentProduct = new Product();
+            currentProduct.Category = "Garden";
+            var expected = "Garden";
+
+            //--Act
+            var actual = currentProduct.Category;
+
+            //-Assert
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Sequence_DefaultValue()
+        {
+            //--Arrange
+            var currentProduct = new Product();
+            var expected = 1;
+
+            //--Act
+            var actual = currentProduct.SequenceNumber;
+
+            //-Assert
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Sequence_NewValue()
+        {
+            //--Arrange
+            var currentProduct = new Product();
+            currentProduct.SequenceNumber = 5;
+            var expected = 5;
+
+            //--Act
+            var actual = currentProduct.SequenceNumber;
+
+            //-Assert
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
