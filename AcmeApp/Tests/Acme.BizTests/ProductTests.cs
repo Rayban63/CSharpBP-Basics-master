@@ -137,7 +137,7 @@ namespace Acme.Biz.Tests
 
             //--Act
             var actual = currentProduct.ProductName;
-            var actualMessage = currentProduct.validationMessage;
+            var actualMessage = currentProduct.ValidationMessage;
 
             //-Assert
 
@@ -155,7 +155,7 @@ namespace Acme.Biz.Tests
 
             //--Act
             var actual = currentProduct.ProductName;
-            var actualMessage = currentProduct.validationMessage;
+            var actualMessage = currentProduct.ValidationMessage;
 
             //-Assert
 
@@ -173,7 +173,7 @@ namespace Acme.Biz.Tests
 
             //--Act
             var actual = currentProduct.ProductName;
-            var actualMessage = currentProduct.validationMessage;
+            var actualMessage = currentProduct.ValidationMessage;
 
             //-Assert
 

@@ -64,13 +64,13 @@ namespace Acme.Biz
             {
                 if (value.Length <3)
                 {
-                    validationMessage = "Product name must be at least 3 characters";
-                    Console.WriteLine(validationMessage);
+                    ValidationMessage = "Product name must be at least 3 characters";
+                    Console.WriteLine(ValidationMessage);
                 }
                 else if (value.Length > 20)
                 {
-                    validationMessage = "Product name cannot be more than 20 characters";
-                    Console.WriteLine(validationMessage);
+                    ValidationMessage = "Product name cannot be more than 20 characters";
+                    Console.WriteLine(ValidationMessage);
                 }
                 else
                 {
@@ -113,7 +113,7 @@ namespace Acme.Biz
         public int SequenceNumber { get; set; } = 1;
 
 
-        public string validationMessage { get; private set; }
+        public string ValidationMessage { get; private set; }
 
         #endregion
 
