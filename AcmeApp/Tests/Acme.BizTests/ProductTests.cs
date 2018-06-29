@@ -230,6 +230,7 @@ namespace Acme.Biz.Tests
             //--Arrange
             var currentProduct = new Product();
             var expected = "Tools-1";
+            Console.WriteLine(currentProduct.ProductCode);
 
             //--Act
             var actual = currentProduct.ProductCode;
