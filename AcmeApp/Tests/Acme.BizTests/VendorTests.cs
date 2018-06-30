@@ -86,5 +86,20 @@ namespace Acme.Biz.Tests
             //Expected Exception
 
         }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void PlaceOrder_SmallerThenOneQuntity_Exeption()
+        {
+            //--Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Saw", "Hacksaw");
+
+            //--Act
+            var actual = vendor.PlaceOrder(product, 0);
+
+            //--assert
+            //Expected Exception
+
+        }
     }
 }
