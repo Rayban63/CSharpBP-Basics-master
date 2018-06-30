@@ -51,9 +51,7 @@ namespace Acme.Biz
             var succes = false;
             var orderText = "Order from Acme.com" + System.Environment.NewLine +
                 "Product: " + product.ProductCode + System.Environment.NewLine +
-                "Quantity: " + quantity;
-           
-
+                "Quantity: " + quantity;          
 
             var emailService = new EmailService();
             var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
@@ -66,6 +64,88 @@ namespace Acme.Biz
             var operationResult = new OperationResult(succes, orderText);
             return operationResult;
         }
+
+        /// <summary>
+        /// Send productorder to vendor
+        /// </summary>
+        /// <param name="product">product to order</param>
+        /// <param name="quantity">quantity of the product to order</param>
+        /// <param name="deliverBy">Requested delivery date</param>
+        /// <returns></returns>
+        public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy)
+        {
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
+            if (quantity <= 0)
+                throw new ArgumentOutOfRangeException(nameof(quantity));
+            if (deliverBy <= DateTimeOffset.Now)
+                throw new ArgumentOutOfRangeException(nameof(deliverBy));
+
+            var succes = false;
+            var orderText = "Order from Acme.com" + System.Environment.NewLine +
+                "Product: " + product.ProductCode + System.Environment.NewLine +
+                "Quantity: " + quantity;
+            if (deliverBy.HasValue)
+            {
+                orderText += System.Environment.NewLine +
+                    "Deliver By: " + deliverBy.Value.ToString("d");
+            }
+            var emailService = new EmailService();
+            var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
+
+            if (confirmation.StartsWith("Message sent: "))
+            {
+                succes = true;
+
+            }
+            var operationResult = new OperationResult(succes, orderText);
+            return operationResult;
+        }
+
+        /// <summary>
+        /// Send productorder to vendor
+        /// </summary>
+        /// <param name="product">product to order</param>
+        /// <param name="quantity">quantity of the product to order</param>
+        /// <param name="deliverBy">Requested delivery date</param>
+        /// <param name="instructions">Delivery instructions</param>
+        /// <returns></returns>
+        public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy, string instructions)
+        {
+                if (product == null)
+                    throw new ArgumentNullException(nameof(product));
+                if (quantity <= 0)
+                    throw new ArgumentOutOfRangeException(nameof(quantity));
+                if (deliverBy <= DateTimeOffset.Now)
+                    throw new ArgumentOutOfRangeException(nameof(deliverBy));
+
+                var succes = false;
+                var orderText = "Order from Acme.com" + System.Environment.NewLine +
+                    "Product: " + product.ProductCode + System.Environment.NewLine +
+                    "Quantity: " + quantity;
+                if (deliverBy.HasValue)
+                {
+                    orderText += System.Environment.NewLine +
+                        "Deliver By: " + deliverBy.Value.ToString("d");
+                }
+                if (!string.IsNullOrWhiteSpace(instructions))
+                {
+                    orderText += System.Environment.NewLine +
+                        "Instructions:" + instructions;
+
+                }
+                var emailService = new EmailService();
+                var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
+
+                if (confirmation.StartsWith("Message sent: "))
+                {
+                succes = true;
+
+                }
+                var operationResult = new OperationResult(succes, orderText);
+                return operationResult;
+        }
+        
         #endregion
     }
 }
