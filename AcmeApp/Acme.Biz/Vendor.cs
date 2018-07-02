@@ -43,26 +43,7 @@ namespace Acme.Biz
         /// <returns></returns>
         public OperationResult PlaceOrder(Product product, int quantity)
         {
-            if (product == null)
-            throw new ArgumentNullException(nameof(product));
-            if (quantity <= 0)
-            throw new ArgumentOutOfRangeException(nameof(quantity));
-
-            var succes = false;
-            var orderText = "Order from Acme.com" + System.Environment.NewLine +
-                "Product: " + product.ProductCode + System.Environment.NewLine +
-                "Quantity: " + quantity;          
-
-            var emailService = new EmailService();
-            var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
-
-            if (confirmation.StartsWith("Message sent: "))
-            {
-                succes = true;
-
-            }
-            var operationResult = new OperationResult(succes, orderText);
-            return operationResult;
+            return PlaceOrder(product, quantity, null, null);
         }
 
         /// <summary>
@@ -74,32 +55,8 @@ namespace Acme.Biz
         /// <returns></returns>
         public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy)
         {
-            if (product == null)
-                throw new ArgumentNullException(nameof(product));
-            if (quantity <= 0)
-                throw new ArgumentOutOfRangeException(nameof(quantity));
-            if (deliverBy <= DateTimeOffset.Now)
-                throw new ArgumentOutOfRangeException(nameof(deliverBy));
+            return PlaceOrder(product, quantity, deliverBy, null);
 
-            var succes = false;
-            var orderText = "Order from Acme.com" + System.Environment.NewLine +
-                "Product: " + product.ProductCode + System.Environment.NewLine +
-                "Quantity: " + quantity;
-            if (deliverBy.HasValue)
-            {
-                orderText += System.Environment.NewLine +
-                    "Deliver By: " + deliverBy.Value.ToString("d");
-            }
-            var emailService = new EmailService();
-            var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
-
-            if (confirmation.StartsWith("Message sent: "))
-            {
-                succes = true;
-
-            }
-            var operationResult = new OperationResult(succes, orderText);
-            return operationResult;
         }
 
         /// <summary>
