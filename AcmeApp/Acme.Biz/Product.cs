@@ -139,6 +139,10 @@ namespace Acme.Biz
                
         }
         #endregion
+        public override string ToString()
+        {
+            return this.ProductName + "(Product Id: " + this.ProductId + ")";
+        }
 
 
     }
