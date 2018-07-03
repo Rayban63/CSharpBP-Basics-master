@@ -102,6 +102,22 @@ namespace Acme.Biz
                 var operationResult = new OperationResult(succes, orderText);
                 return operationResult;
         }
+        /// <summary>
+        /// send productOrder to vendor
+        /// </summary>
+        /// <param name="product">Product to order</param>
+        /// <param name="quantity">quantity of the product to order</param>
+        /// <param name="includeAdress">true to include schipping address</param>
+        /// <param name="sentCopy">true to sent a copy to the customer</param>
+        /// <returns>Succes Flag and order text</returns>
+        public OperationResult PlaceOrder(Product product, int quantity, bool includeAdress, bool sentCopy)
+        {
+            var orderText = "Test";
+            if (includeAdress) orderText += " With Address";
+            if (sentCopy) orderText += " With Copy";
+            var operationResult = new OperationResult(true, orderText);
+            return operationResult;
+        }
         
         #endregion
     }
