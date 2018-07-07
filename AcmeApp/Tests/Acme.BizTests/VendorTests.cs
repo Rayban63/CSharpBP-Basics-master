@@ -127,7 +127,9 @@ namespace Acme.Biz.Tests
             var expected = new OperationResult(true, "Test With Address");
 
             //--Act
-            var actual = vendor.PlaceOrder(product, 12, true, false);
+            var actual = vendor.PlaceOrder(product, 12,
+                                           includeAddress : true, 
+                                           sentCopy:  false);
 
             //--Assert
             Assert.AreEqual(expected.Success, actual.Success);
@@ -142,7 +144,9 @@ namespace Acme.Biz.Tests
             var expected = new OperationResult(true, "Test With Copy");
 
             //--Act
-            var actual = vendor.PlaceOrder(product, 12, false, true);
+            var actual = vendor.PlaceOrder(product, 12,
+                                           includeAddress: false,
+                                           sentCopy : true);
 
             //--Assert
             Assert.AreEqual(expected.Success, actual.Success);
