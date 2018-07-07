@@ -43,34 +43,10 @@ namespace Acme.Biz
         /// </summary>
         /// <param name="product">product to order</param>
         /// <param name="quantity">quantity of the product to order</param>
-        /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quantity)
-        {
-            return PlaceOrder(product, quantity, null, null);
-        }
-
-        /// <summary>
-        /// Send productorder to vendor
-        /// </summary>
-        /// <param name="product">product to order</param>
-        /// <param name="quantity">quantity of the product to order</param>
-        /// <param name="deliverBy">Requested delivery date</param>
-        /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy)
-        {
-            return PlaceOrder(product, quantity, deliverBy, null);
-
-        }
-
-        /// <summary>
-        /// Send productorder to vendor
-        /// </summary>
-        /// <param name="product">product to order</param>
-        /// <param name="quantity">quantity of the product to order</param>
         /// <param name="deliverBy">Requested delivery date</param>
         /// <param name="instructions">Delivery instructions</param>
         /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy, string instructions)
+        public OperationResult PlaceOrder(Product product, int quantity, DateTimeOffset? deliverBy = null, string instructions = " standard delivery")
         {
                 if (product == null)
                     throw new ArgumentNullException(nameof(product));

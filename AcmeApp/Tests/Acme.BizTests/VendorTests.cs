@@ -63,7 +63,8 @@ namespace Acme.Biz.Tests
             //--Arrange
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "Hacksaw");
-            var expected = new OperationResult(true, "Order from Acme.com\r\nProduct: Tools-1\r\nQuantity: 12");
+            var expected = new OperationResult(true, "Order from Acme.com\r\nProduct: Tools-1\r\nQuantity: 12" + 
+                "\r\nInstructions: standard delivery");
 
             //--Act
             var actual = vendor.PlaceOrder(product, 12);
@@ -79,7 +80,8 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "Hacksaw");
             var expected = new OperationResult(true, "Order from Acme.com\r\nProduct: Tools-1\r\nQuantity: 12" +
-                "\r\nDeliver By: 25-10-2019");
+                "\r\nDeliver By: 25-10-2019" +
+                "\r\nInstructions: standard delivery");
 
             //--Act
             var actual = vendor.PlaceOrder(product, 12, new DateTimeOffset(2019, 10, 25, 0, 0, 0, new TimeSpan(-7, 0, 0)));
