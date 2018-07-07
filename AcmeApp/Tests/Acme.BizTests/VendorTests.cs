@@ -74,6 +74,23 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Message, actual.Message);
         }
         [TestMethod()]
+        public void PlaceOrderTest_NoDeliveryDate()
+        {
+            //--Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Saw", "Hacksaw");
+            var expected = new OperationResult(true, "Order from Acme.com\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "\r\nInstructions: Delivery to suite 24");
+
+            //--Act
+            var actual = vendor.PlaceOrder(product, 12,
+                instructions:  " Delivery to suite 24");
+
+            //--Assert
+            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Message, actual.Message);
+        }
+        [TestMethod()]
         public void PlaceOrder_3ParamerterTest()
         {
             //--Arrange
