@@ -13,6 +13,9 @@ namespace Acme.Biz
     public class Vendor 
     {
         #region Properties
+        public enum IncludeAddress { Yes, No };
+        public enum SendCopy { Yes, No };
+
         public int VendorId { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
@@ -110,11 +113,11 @@ namespace Acme.Biz
         /// <param name="includeAddress">true to include schipping address</param>
         /// <param name="sentCopy">true to sent a copy to the customer</param>
         /// <returns>Succes Flag and order text</returns>
-        public OperationResult PlaceOrder(Product product, int quantity, bool includeAddress, bool sentCopy)
+        public OperationResult PlaceOrder(Product product, int quantity, IncludeAddress includeAddress, SendCopy sentCopy)
         {
             var orderText = "Test";
-            if (includeAddress) orderText += " With Address";
-            if (sentCopy) orderText += " With Copy";
+            if (includeAddress == IncludeAddress.Yes) orderText += " With Address";
+            if (sentCopy == SendCopy.Yes) orderText += " With Copy";
             var operationResult = new OperationResult(true, orderText);
             return operationResult;
         }
